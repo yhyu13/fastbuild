@@ -1666,9 +1666,13 @@ void ObjectNode::EmitCompilationMessage( const Args & fullArgs, bool useDeoptimi
         output += GetName();
         if ( racingRemoteJob )
         {
-            output += " <LOCAL RACE>";
+            output += " <LOCAL RACE REMOTE>";
         }
         else if ( stealingRemoteJob )
+        {
+            output += " <LOCAL STEAL REMOTE>";
+        }
+        else
         {
             output += " <LOCAL>";
         }
