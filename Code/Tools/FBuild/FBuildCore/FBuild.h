@@ -151,6 +151,9 @@ protected:
     Array< EnvironmentVarAndHash > m_ImportedEnvironmentVars;
     BFFFileExists m_FileExistsInfo;
     BFFUserFunctions m_UserFunctions;
+
+    AString m_HostName;
+    AString m_IPAddress;
 };
 
 //------------------------------------------------------------------------------

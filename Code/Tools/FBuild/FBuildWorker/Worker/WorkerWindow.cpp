@@ -192,13 +192,21 @@ WorkerWindow::~WorkerWindow()
 
 // SetStatus
 //------------------------------------------------------------------------------
-void WorkerWindow::SetStatus( const AString & hostName, const AString & statusText )
+void WorkerWindow::SetStatus( const AString & hostName, const AString & ip, const AString & statusText )
 {
     AStackString< 512 > text;
     text.Format( "FBuildWorker %s", FBUILD_VERSION_STRING );
     if ( !hostName.IsEmpty() )
     {
         text.AppendFormat( " | \"%s\"", hostName.Get() );
+    }
+    if ( !ip.IsEmpty() )
+    {
+        text.AppendFormat( " | Ready at \"%s\"", ip.Get() );
+    }
+    else
+    {
+        text.AppendFormat( " | Not Ready, Waiting...");
     }
     if ( !statusText.IsEmpty() )
     {

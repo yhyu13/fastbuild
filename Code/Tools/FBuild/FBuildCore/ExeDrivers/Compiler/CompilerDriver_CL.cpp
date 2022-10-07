@@ -70,14 +70,25 @@ CompilerDriver_CL::~CompilerDriver_CL() = default;
 {
     // Can't use the precompiled header when compiling the preprocessed output
     // as this would prevent cacheing.
-    if ( StripTokenWithArg_MSVC( "Yu", token, index ) )
+    if (StripTokenWithArg_MSVC( "Yu", token, index ) )
     {
         return true;
     }
-    if ( StripTokenWithArg_MSVC( "Fp", token, index ) )
+    if (StripTokenWithArg_MSVC( "Fp", token, index ) )
     {
         return true;
     }
+
+    // Yuhang : Cannot just make the remote strip PCH and be wishful that local could still benefit from PCH
+    // Because preprocessed remote compiled target, when later used locally, still result in PCH error
+    // if ( isLocal == false && StripTokenWithArg_MSVC( "Yu", token, index ) )
+    // {
+    //     return true;
+    // }
+    // if ( isLocal == false && StripTokenWithArg_MSVC( "Fp", token, index ) )
+    // {
+    //     return true;
+    // }
 
     // Remote compilation writes to a temp pdb
     if ( isLocal == false )

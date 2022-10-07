@@ -179,7 +179,7 @@ FBuildOptions::OptionsResult FBuildOptions::ProcessCommandLine( int argc, char *
                 int32_t distLevel;
                 if ( ( sizeIndex >= argc ) ||
                      ( AString::ScanS( argv[sizeIndex], "%i", &distLevel ) != 1 ) ||
-                     ( ( distLevel < -128 ) || ( distLevel > 12 ) ) ) // See Compressor for valid ranges
+                     ( ( distLevel < -128 ) || ( distLevel > 12 ) ) ) // See Compressor.h for valid ranges
                 {
                     OUTPUT( "FBuild: Error: Missing or bad <level> for '-distcompressionlevel' argument\n" );
                     OUTPUT( "Try \"%s -help\"\n", programName.Get() );
