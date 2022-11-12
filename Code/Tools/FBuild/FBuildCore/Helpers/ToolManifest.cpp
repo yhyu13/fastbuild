@@ -685,8 +685,11 @@ bool ToolManifest::ReceiveFileData( uint32_t fileId,
     else
     {
         // file is in some completely other directory, so put in same place as exe
-        const char * lastSlash = otherFile.FindLast( NATIVE_SLASH );
-        otherFileRelativePath = ( lastSlash ? lastSlash + 1 : otherFile.Get() );
+        //const char * lastSlash = otherFile.FindLast( NATIVE_SLASH );
+        //otherFileRelativePath = ( lastSlash ? lastSlash + 1 : otherFile.Get() );
+        
+        // Simply output the other file path as the relative path
+        otherFileRelativePath = otherFile.Get();
     }
 }
 
